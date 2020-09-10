@@ -12,7 +12,7 @@
 #include <vector>
 
 #define SPLEETER_MODELS "/Users/koji/work/PartScratch/spleeterpp/build/models/offline"
-#define LATE_SEC 2
+#define LATE_SEC 3
 
 @implementation AppController
 
@@ -20,7 +20,7 @@
     NSLog(@"Late5 awakeFromNib");
     
     [self initSpleeter];
-    
+//    https://stackoverflow.com/questions/17690740/create-a-high-priority-serial-dispatch-queue-with-gcd/17690878
     _dq = dispatch_queue_create("spleeter", DISPATCH_QUEUE_SERIAL);
     
     _ring = [[RingBuffer alloc] init];

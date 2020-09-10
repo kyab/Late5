@@ -689,48 +689,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="374" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7o-mb-oJT">
-                        <rect key="frame" x="46" y="64" width="19" height="96"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="pqA-lI-WlL"/>
-                        <connections>
-                            <action selector="volVocalsChanged:" target="fbB-Wp-yOY" id="TCM-ja-WXf"/>
-                        </connections>
-                    </slider>
                     <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="efU-lk-MFS">
-                        <rect key="frame" x="110" y="64" width="19" height="96"/>
+                        <rect key="frame" x="111" y="17" width="25" height="201"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="grP-hD-TuC"/>
+                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="left" numberOfTickMarks="3" sliderType="linear" id="grP-hD-TuC"/>
                         <connections>
                             <action selector="volDrumsChanged:" target="fbB-Wp-yOY" id="ALa-fv-EHj"/>
                         </connections>
                     </slider>
                     <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wYc-zT-Ti1">
-                        <rect key="frame" x="169" y="64" width="19" height="96"/>
+                        <rect key="frame" x="169" y="17" width="24" height="201"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="C9N-k2-RjW"/>
+                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="left" numberOfTickMarks="3" sliderType="linear" id="C9N-k2-RjW"/>
                         <connections>
                             <action selector="volBassChanged:" target="fbB-Wp-yOY" id="DIO-F0-TW8"/>
                         </connections>
                     </slider>
                     <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTa-ua-hQv">
-                        <rect key="frame" x="228" y="64" width="19" height="96"/>
+                        <rect key="frame" x="228" y="17" width="24" height="201"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="0rB-fl-TPo"/>
+                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="left" numberOfTickMarks="3" sliderType="linear" id="0rB-fl-TPo"/>
                         <connections>
                             <action selector="volPianoChanged:" target="fbB-Wp-yOY" id="Ypn-2Z-v6t"/>
                         </connections>
                     </slider>
                     <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1e-oR-YZr">
-                        <rect key="frame" x="291" y="64" width="19" height="96"/>
+                        <rect key="frame" x="293" y="17" width="25" height="201"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="6O7-nX-Ieo"/>
+                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="left" numberOfTickMarks="3" sliderType="linear" id="6O7-nX-Ieo"/>
                         <connections>
                             <action selector="volOtherChanged:" target="fbB-Wp-yOY" id="lpL-gR-cKa"/>
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXG-T9-0tr">
-                        <rect key="frame" x="33" y="166" width="44" height="16"/>
+                        <rect key="frame" x="34" y="224" width="44" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Vocals" id="8dw-hu-bWr">
                             <font key="font" metaFont="system"/>
@@ -739,7 +731,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qJZ-Zt-YhY">
-                        <rect key="frame" x="97" y="166" width="44" height="16"/>
+                        <rect key="frame" x="98" y="224" width="44" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Drums" id="MaJ-Ho-VKc">
                             <font key="font" metaFont="system"/>
@@ -748,7 +740,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ev4-WZ-SNS">
-                        <rect key="frame" x="162" y="166" width="33" height="16"/>
+                        <rect key="frame" x="163" y="224" width="33" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Bass" id="ckf-uO-NZL">
                             <font key="font" metaFont="system"/>
@@ -757,7 +749,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gUn-gG-CLR">
-                        <rect key="frame" x="218" y="166" width="38" height="16"/>
+                        <rect key="frame" x="219" y="224" width="38" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Piano" id="MmL-lw-wIo">
                             <font key="font" metaFont="system"/>
@@ -766,7 +758,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XTs-IJ-Web">
-                        <rect key="frame" x="281" y="166" width="39" height="16"/>
+                        <rect key="frame" x="282" y="224" width="39" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Other" id="nan-Dm-kem">
                             <font key="font" metaFont="system"/>
@@ -774,6 +766,14 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7o-mb-oJT">
+                        <rect key="frame" x="45" y="17" width="25" height="201"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="left" numberOfTickMarks="3" sliderType="linear" id="pqA-lI-WlL"/>
+                        <connections>
+                            <action selector="volVocalsChanged:" target="fbB-Wp-yOY" id="TCM-ja-WXf"/>
+                        </connections>
+                    </slider>
                 </subviews>
             </view>
             <point key="canvasLocation" x="98" y="382"/>
