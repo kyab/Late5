@@ -11,7 +11,31 @@
 		EB4E8D1D250902B000A3822D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4E8D1C250902B000A3822D /* Assets.xcassets */; };
 		EB4E8D20250902B000A3822D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4E8D1E250902B000A3822D /* MainMenu.xib */; };
 		EB4E8D23250902B000A3822D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4E8D22250902B000A3822D /* main.m */; };
+		EB4E8D2C250902DB00A3822D /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB4E8D2B250902DB00A3822D /* AppController.mm */; };
+		EB4E8D2F2509037400A3822D /* AudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4E8D2E2509037400A3822D /* AudioEngine.m */; };
+		EB4E8D322509040200A3822D /* RingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4E8D312509040200A3822D /* RingBuffer.m */; };
+		EB4E8D342509E00900A3822D /* libwave.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4E8D332509E00900A3822D /* libwave.a */; };
+		EB4E8D362509E03C00A3822D /* libspleeter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4E8D352509E03C00A3822D /* libspleeter.a */; };
+		EB4E8D382509E04700A3822D /* libspleeter_common.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4E8D372509E04700A3822D /* libspleeter_common.a */; };
+		EB4E8D3A2509E05800A3822D /* libtensorflow_framework.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4E8D392509E05800A3822D /* libtensorflow_framework.1.dylib */; };
+		EB4E8D3C2509E06100A3822D /* libtensorflow.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */; };
+		EB4E8D3E2509E09B00A3822D /* libtensorflow_framework.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4E8D392509E05800A3822D /* libtensorflow_framework.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		EB4E8D3F2509E0AE00A3822D /* libtensorflow.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EB4E8D3D2509E08F00A3822D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+				EB4E8D3E2509E09B00A3822D /* libtensorflow_framework.1.dylib in CopyFiles */,
+				EB4E8D3F2509E0AE00A3822D /* libtensorflow.1.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EB4E8D16250902B000A3822D /* Late5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Late5.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +46,17 @@
 		EB4E8D21250902B000A3822D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB4E8D22250902B000A3822D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EB4E8D24250902B000A3822D /* Late5.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Late5.entitlements; sourceTree = "<group>"; };
+		EB4E8D2A250902DB00A3822D /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		EB4E8D2B250902DB00A3822D /* AppController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
+		EB4E8D2D2509037400A3822D /* AudioEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
+		EB4E8D2E2509037400A3822D /* AudioEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioEngine.m; sourceTree = "<group>"; };
+		EB4E8D302509040200A3822D /* RingBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
+		EB4E8D312509040200A3822D /* RingBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RingBuffer.m; sourceTree = "<group>"; };
+		EB4E8D332509E00900A3822D /* libwave.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwave.a; path = "../PartScratch/spleeterpp/build/_deps/wave-build/src/wave/libwave.a"; sourceTree = "<group>"; };
+		EB4E8D352509E03C00A3822D /* libspleeter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspleeter.a; path = ../PartScratch/spleeterpp/build/src/spleeter/libspleeter.a; sourceTree = "<group>"; };
+		EB4E8D372509E04700A3822D /* libspleeter_common.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspleeter_common.a; path = ../PartScratch/spleeterpp/build/src/spleeter_common/libspleeter_common.a; sourceTree = "<group>"; };
+		EB4E8D392509E05800A3822D /* libtensorflow_framework.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow_framework.1.dylib; path = ../PartScratch/spleeterpp/build/tensorflow/lib/libtensorflow_framework.1.dylib; sourceTree = "<group>"; };
+		EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow.1.dylib; path = ../PartScratch/spleeterpp/build/tensorflow/lib/libtensorflow.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +64,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB4E8D382509E04700A3822D /* libspleeter_common.a in Frameworks */,
+				EB4E8D3C2509E06100A3822D /* libtensorflow.1.dylib in Frameworks */,
+				EB4E8D342509E00900A3822D /* libwave.a in Frameworks */,
+				EB4E8D362509E03C00A3822D /* libspleeter.a in Frameworks */,
+				EB4E8D3A2509E05800A3822D /* libtensorflow_framework.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +78,11 @@
 		EB4E8D0D250902B000A3822D = {
 			isa = PBXGroup;
 			children = (
+				EB4E8D332509E00900A3822D /* libwave.a */,
+				EB4E8D352509E03C00A3822D /* libspleeter.a */,
+				EB4E8D372509E04700A3822D /* libspleeter_common.a */,
+				EB4E8D392509E05800A3822D /* libtensorflow_framework.1.dylib */,
+				EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */,
 				EB4E8D18250902B000A3822D /* Late5 */,
 				EB4E8D17250902B000A3822D /* Products */,
 			);
@@ -54,6 +99,12 @@
 		EB4E8D18250902B000A3822D /* Late5 */ = {
 			isa = PBXGroup;
 			children = (
+				EB4E8D2A250902DB00A3822D /* AppController.h */,
+				EB4E8D2B250902DB00A3822D /* AppController.mm */,
+				EB4E8D2D2509037400A3822D /* AudioEngine.h */,
+				EB4E8D2E2509037400A3822D /* AudioEngine.m */,
+				EB4E8D302509040200A3822D /* RingBuffer.h */,
+				EB4E8D312509040200A3822D /* RingBuffer.m */,
 				EB4E8D19250902B000A3822D /* AppDelegate.h */,
 				EB4E8D1A250902B000A3822D /* AppDelegate.m */,
 				EB4E8D1C250902B000A3822D /* Assets.xcassets */,
@@ -73,7 +124,9 @@
 			buildConfigurationList = EB4E8D27250902B000A3822D /* Build configuration list for PBXNativeTarget "Late5" */;
 			buildPhases = (
 				EB4E8D12250902B000A3822D /* Sources */,
+				EB4E8D3D2509E08F00A3822D /* CopyFiles */,
 				EB4E8D13250902B000A3822D /* Frameworks */,
+				EB4E8D402509E0B500A3822D /* ShellScript */,
 				EB4E8D14250902B000A3822D /* Resources */,
 			);
 			buildRules = (
@@ -129,12 +182,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EB4E8D402509E0B500A3822D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n# In Xcode you actually enter the path for the shell\n# you want to use in a text field about the shell source.\n# So, !/bin/bash might not be necessary.\n\n# Space separated list of libraries.\n# Enter any dylibs you have in your Copy File Phase.\nTARGETS=(libtensorflow.1.dylib libtensorflow_framework.1.dylib)\n\nEXECFILE=${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\n\nLIBPATH=${BUILT_PRODUCTS_DIR}/${SHARED_SUPPORT_FOLDER_PATH}\nNEWLIBPATH=@executable_path/../SharedSupport\n\nfor TARGET in ${TARGETS[@]} ; do\nLIBFILE=${LIBPATH}/${TARGET}\nTARGETID=`otool -DX \"${LIBPATH}/$TARGET\"`\nNEWTARGETID=${NEWLIBPATH}/${TARGET}\necho NEWTARGETID is ${NEWTARGETID}\necho TARGETID is ${TARGETID}\ninstall_name_tool -id \"${NEWTARGETID}\" \"${LIBFILE}\"\ninstall_name_tool -change @rpath/${TARGET} ${NEWTARGETID} \"${EXECFILE}\"\ndone\n\notool -L ${EXECFILE}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EB4E8D12250902B000A3822D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB4E8D2F2509037400A3822D /* AudioEngine.m in Sources */,
 				EB4E8D23250902B000A3822D /* main.m in Sources */,
+				EB4E8D2C250902DB00A3822D /* AppController.mm in Sources */,
+				EB4E8D322509040200A3822D /* RingBuffer.m in Sources */,
 				EB4E8D1B250902B000A3822D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,11 +346,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A386R5WFZ6;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/koji/work/PartScratch/spleeterpp/src,
+					"/Users/koji/work/PartScratch/spleeterpp/build/_deps/eigen3-src",
+				);
 				INFOPLIST_FILE = Late5/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/koji/work/PartScratch/spleeterpp/build/_deps/wave-build/src/wave",
+					/Users/koji/work/PartScratch/spleeterpp/build/src/spleeter,
+					/Users/koji/work/PartScratch/spleeterpp/build/src/spleeter_common,
+					/Users/koji/work/PartScratch/spleeterpp/build/tensorflow/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyab.Late5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -289,11 +375,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A386R5WFZ6;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/koji/work/PartScratch/spleeterpp/src,
+					"/Users/koji/work/PartScratch/spleeterpp/build/_deps/eigen3-src",
+				);
 				INFOPLIST_FILE = Late5/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/koji/work/PartScratch/spleeterpp/build/_deps/wave-build/src/wave",
+					/Users/koji/work/PartScratch/spleeterpp/build/src/spleeter,
+					/Users/koji/work/PartScratch/spleeterpp/build/src/spleeter_common,
+					/Users/koji/work/PartScratch/spleeterpp/build/tensorflow/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyab.Late5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
