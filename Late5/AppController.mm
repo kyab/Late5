@@ -11,7 +11,7 @@
 #include "spleeter/spleeter.h"
 #include <vector>
 
-#define SPLEETER_MODELS "/Users/koji/work/PartScratch/spleeterpp/build/models/offline"
+//#define SPLEETER_MODELS "/Users/koji/work/PartScratch/spleeterpp/build/models/offline"
 #define LATE_SEC 3
 
 @implementation AppController
@@ -58,11 +58,14 @@
 -(void)initSpleeter{
     std::error_code err;
     NSLog(@"Initializing spleeter");
+    
+    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    
     spleeter::Initialize(
-                         std::string(SPLEETER_MODELS),{spleeter::FiveStems}, err);
+                         std::string(resourcePath.UTF8String),{spleeter::FiveStems}, err);
     NSLog(@"spleeter Initialize err = %d", err.value());
     
-    //spleet empty
+    //split empty for warm up.
     {
         NSLog(@"First Split");
         std::vector<float> fragment(44100*2);

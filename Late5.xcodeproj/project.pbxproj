@@ -21,6 +21,7 @@
 		EB4E8D3C2509E06100A3822D /* libtensorflow.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */; };
 		EB4E8D3E2509E09B00A3822D /* libtensorflow_framework.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4E8D392509E05800A3822D /* libtensorflow_framework.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		EB4E8D3F2509E0AE00A3822D /* libtensorflow.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		EB4E8D44250CDB4A00A3822D /* 5stems in Resources */ = {isa = PBXBuildFile; fileRef = EB4E8D43250CDB4A00A3822D /* 5stems */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,7 @@
 		EB4E8D372509E04700A3822D /* libspleeter_common.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspleeter_common.a; path = ../PartScratch/spleeterpp/build/src/spleeter_common/libspleeter_common.a; sourceTree = "<group>"; };
 		EB4E8D392509E05800A3822D /* libtensorflow_framework.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow_framework.1.dylib; path = ../PartScratch/spleeterpp/build/tensorflow/lib/libtensorflow_framework.1.dylib; sourceTree = "<group>"; };
 		EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow.1.dylib; path = ../PartScratch/spleeterpp/build/tensorflow/lib/libtensorflow.1.dylib; sourceTree = "<group>"; };
+		EB4E8D43250CDB4A00A3822D /* 5stems */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 5stems; path = ../PartScratch/spleeterpp/build/models/offline/5stems; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				EB4E8D372509E04700A3822D /* libspleeter_common.a */,
 				EB4E8D392509E05800A3822D /* libtensorflow_framework.1.dylib */,
 				EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */,
+				EB4E8D43250CDB4A00A3822D /* 5stems */,
 				EB4E8D18250902B000A3822D /* Late5 */,
 				EB4E8D17250902B000A3822D /* Products */,
 			);
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB4E8D1D250902B000A3822D /* Assets.xcassets in Resources */,
+				EB4E8D44250CDB4A00A3822D /* 5stems in Resources */,
 				EB4E8D20250902B000A3822D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,7 +350,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A386R5WFZ6;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					/Users/koji/work/PartScratch/spleeterpp/src,
 					"/Users/koji/work/PartScratch/spleeterpp/build/_deps/eigen3-src",
@@ -362,6 +366,8 @@
 					/Users/koji/work/PartScratch/spleeterpp/build/src/spleeter_common,
 					/Users/koji/work/PartScratch/spleeterpp/build/tensorflow/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyab.Late5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -375,7 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A386R5WFZ6;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					/Users/koji/work/PartScratch/spleeterpp/src,
 					"/Users/koji/work/PartScratch/spleeterpp/build/_deps/eigen3-src",
@@ -391,6 +397,8 @@
 					/Users/koji/work/PartScratch/spleeterpp/build/src/spleeter_common,
 					/Users/koji/work/PartScratch/spleeterpp/build/tensorflow/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyab.Late5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
