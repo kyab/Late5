@@ -39,6 +39,12 @@
     _volPiano = 1.0;
     _volOther = 1.0;
     
+    _panVocals = 0.0;
+    _panDrums = 0.0;
+    _panBass = 0.0;
+    _panPiano = 0.0;
+    _panOther = 0.0;
+    
     _tempRing = _ring5a;
     
     _ae = [[AudioEngine alloc] init];
@@ -104,6 +110,35 @@
     _volOther = [slider doubleValue];
 }
 
+- (IBAction)panVocalsChanged:(id)sender {
+    CircularSlider *slider = (CircularSlider *)sender;
+    _panVocals = [slider floatValue];
+}
+
+- (IBAction)panDrumsChanged:(id)sender {
+    CircularSlider *slider = (CircularSlider *)sender;
+    _panDrums = [slider floatValue];
+}
+
+- (IBAction)panBassChanged:(id)sender {
+    CircularSlider *slider = (CircularSlider *)sender;
+    _panBass = [slider floatValue];
+}
+
+- (IBAction)panPianoChanged:(id)sender {
+    CircularSlider *slider = (CircularSlider *)sender;
+    _panPiano = [slider floatValue];
+}
+
+- (IBAction)panOtherChanged:(id)sender {
+    CircularSlider *slider = (CircularSlider *)sender;
+    _panOther = [slider floatValue];
+}
+
+
+
+
+
 
 - (OSStatus) outCallback:(AudioUnitRenderActionFlags *)ioActionFlags inTimeStamp:(const AudioTimeStamp *) inTimeStamp inBusNumber:(UInt32) inBusNumber inNumberFrames:(UInt32)inNumberFrames ioData:(AudioBufferList *)ioData{
     
@@ -140,6 +175,13 @@
     volumes[3] = _volPiano;
     volumes[4] = _volOther;
     
+    float pans[5];
+    pans[0] = _panVocals;
+    pans[1] = _panDrums;
+    pans[2] = _panBass;
+    pans[3] = _panPiano;
+    pans[4] = _panOther;
+    
     std::vector<float> leftSrc(inNumberFrames);
     std::vector<float> rightSrc(inNumberFrames);
     
@@ -147,8 +189,20 @@
         float *startLeft = [rings[si] readPtrLeft];
         float *startRight = [rings[si] readPtrRight];
         for(int i = 0 ; i < inNumberFrames; i++){
-            leftSrc[i] += *(startLeft + i) * volumes[si];
-            rightSrc[i] += *(startRight + i) * volumes[si];
+            
+            //pan gain control
+            float panVolLeft = 1.0;
+            float panVolRight = 1.0;
+            if (pans[si] >= 0){     //say 0.8
+                panVolRight = 1.0;
+                panVolLeft = 1.0 - pans[si];
+            }else{
+                panVolLeft = 1.0;
+                panVolRight = 1.0 + pans[si];
+
+            }
+            leftSrc[i] += *(startLeft + i) * volumes[si] * panVolLeft;
+            rightSrc[i] += *(startRight + i) * volumes[si] * panVolRight;
         }
         memcpy(ioData->mBuffers[0].mData, leftSrc.data(), inNumberFrames * sizeof(float));
         memcpy(ioData->mBuffers[1].mData, rightSrc.data(), inNumberFrames * sizeof(float));

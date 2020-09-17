@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "AudioEngine.h"
 #import "RingBuffer.h"
+#import "CircularSlider.h"
 
 #include <dispatch/dispatch.h>
 
@@ -34,6 +35,13 @@ NS_ASSUME_NONNULL_BEGIN
     float _volBass;
     float _volPiano;
     float _volOther;
+    
+    float _panVocals;
+    float _panDrums;
+    float _panBass;
+    float _panPiano;
+    float _panOther;
+    
     
     
     //GCD
