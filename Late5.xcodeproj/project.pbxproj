@@ -23,6 +23,7 @@
 		EB4E8D3F2509E0AE00A3822D /* libtensorflow.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4E8D3B2509E06100A3822D /* libtensorflow.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		EB4E8D44250CDB4A00A3822D /* 5stems in Resources */ = {isa = PBXBuildFile; fileRef = EB4E8D43250CDB4A00A3822D /* 5stems */; };
 		EBC334A1251251D800EA2526 /* CircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC334A0251251D800EA2526 /* CircularSlider.m */; };
+		EBC334A42513672800EA2526 /* TurnTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC334A32513672800EA2526 /* TurnTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +63,8 @@
 		EB4E8D43250CDB4A00A3822D /* 5stems */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 5stems; path = ../PartScratch/spleeterpp/build/models/offline/5stems; sourceTree = "<group>"; };
 		EBC3349F251251D800EA2526 /* CircularSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircularSlider.h; sourceTree = "<group>"; };
 		EBC334A0251251D800EA2526 /* CircularSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircularSlider.m; sourceTree = "<group>"; };
+		EBC334A22513672800EA2526 /* TurnTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TurnTableView.h; sourceTree = "<group>"; };
+		EBC334A32513672800EA2526 /* TurnTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TurnTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,10 @@
 				EB4E8D2E2509037400A3822D /* AudioEngine.m */,
 				EB4E8D302509040200A3822D /* RingBuffer.h */,
 				EB4E8D312509040200A3822D /* RingBuffer.m */,
+				EBC334A0251251D800EA2526 /* CircularSlider.m */,
+				EBC3349F251251D800EA2526 /* CircularSlider.h */,
+				EBC334A22513672800EA2526 /* TurnTableView.h */,
+				EBC334A32513672800EA2526 /* TurnTableView.m */,
 				EB4E8D19250902B000A3822D /* AppDelegate.h */,
 				EB4E8D1A250902B000A3822D /* AppDelegate.m */,
 				EB4E8D1C250902B000A3822D /* Assets.xcassets */,
@@ -118,8 +125,6 @@
 				EB4E8D21250902B000A3822D /* Info.plist */,
 				EB4E8D22250902B000A3822D /* main.m */,
 				EB4E8D24250902B000A3822D /* Late5.entitlements */,
-				EBC3349F251251D800EA2526 /* CircularSlider.h */,
-				EBC334A0251251D800EA2526 /* CircularSlider.m */,
 			);
 			path = Late5;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				EB4E8D2C250902DB00A3822D /* AppController.mm in Sources */,
 				EBC334A1251251D800EA2526 /* CircularSlider.m in Sources */,
 				EB4E8D322509040200A3822D /* RingBuffer.m in Sources */,
+				EBC334A42513672800EA2526 /* TurnTableView.m in Sources */,
 				EB4E8D1B250902B000A3822D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

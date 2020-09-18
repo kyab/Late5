@@ -332,6 +332,18 @@
     _playFrame = sample;
 }
 
+-(UInt32)advanceNaturalPtrSample:(SInt32)sample{
+    SInt32 frames = [self frames];
+    if((SInt32)_naturalFrame + sample > frames){
+        _naturalFrame = sample - (frames - _naturalFrame);
+    }else if ((SInt32)_naturalFrame + sample < 0){
+        _naturalFrame = frames - (sample*(-1) - _naturalFrame);
+    }else{
+        _naturalFrame += sample;
+    }
+    return _naturalFrame;
+}
+
 -(UInt32)readPtrDistanceFrom:(SInt32)sample{
     if (_playFrame >= sample){
         return (UInt32)(_playFrame - sample);
@@ -343,6 +355,7 @@
 -(void)resetBuffer{
     _playFrame = 0;
     _recordFrame = 0;
+    _naturalFrame = 0;
 //    bzero(_leftBuf,sizeof(float)*RING_SIZE_SAMPLE);
 //    bzero(_rightBuf,sizeof(float)*RING_SIZE_SAMPLE);
 }
@@ -351,11 +364,18 @@
     
     if (0 > (SInt32)_recordFrame - _minOffsetFrame){
         _playFrame = [self frames] - (_minOffsetFrame - _recordFrame);
-        
     }else{
         _playFrame = _recordFrame - _minOffsetFrame;
     }
 //    NSLog(@"frames = %u, w = %u, r = %u", [self frames], _recordFrame, _playFrame);
+}
+
+-(void)followToNatural{
+    if( 0 > (SInt32)_naturalFrame - _minOffsetFrame){
+        _playFrame = [self frames] - (_minOffsetFrame - _naturalFrame);
+    }else{
+        _playFrame = _naturalFrame - _minOffsetFrame;
+    }
 }
 
 -(UInt32)frames{

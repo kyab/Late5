@@ -14,13 +14,29 @@
 //#define SPLEETER_MODELS "/Users/koji/work/PartScratch/spleeterpp/build/models/offline"
 #define LATE_SEC 3
 
+/////////////////////////////////////////////
+static double linearInterporation(int x0, double y0, int x1, double y1, double x){
+    if (x0 == x1){
+        return y0;
+    }
+    double rate = (x - x0) / (x1 - x0);
+    double y = (1.0 - rate)*y0 + rate*y1;
+    return y;
+}
+///////////////////////////////////////////////
+
+
+
+
+
 @implementation AppController
 
 -(void)awakeFromNib{
     NSLog(@"Late5 awakeFromNib");
     
     [self initSpleeter];
-//    https://stackoverflow.com/questions/17690740/create-a-high-priority-serial-dispatch-queue-with-gcd/17690878
+    
+    //    https://stackoverflow.com/questions/17690740/create-a-high-priority-serial-dispatch-queue-with-gcd/17690878
     _dq = dispatch_queue_create("spleeter", DISPATCH_QUEUE_SERIAL);
     
     _ring = [[RingBuffer alloc] init];
@@ -59,6 +75,11 @@
     [_ae startInput];
     [_ae startOutput];
     
+    _speedRate = 1.0;
+    [_turnTable setDelegate:(id<TurnTableDelegate>)self];
+    [_turnTable setRingBuffer:_ringDrums];
+    [_turnTable start];
+    
 }
 
 -(void)initSpleeter{
@@ -83,6 +104,17 @@
     }
     
 }
+
+-(void)turnTableSpeedRateChanged{
+    _speedRate = [_turnTable speedRate];
+    if(_speedRate == 1.0){
+        [_ringDrums followToNatural];
+        [_ringBass followToNatural];
+//        [_ringOther followToNatural];
+    }
+}
+
+
 
 
 - (IBAction)volVocalsChanged:(id)sender {
@@ -186,11 +218,48 @@
     std::vector<float> rightSrc(inNumberFrames);
     
     for(int si = 0; si < 5; si++){
+        
+        if (si == 1 || si == 2){
+            if([rings[si] isShortage]) {
+                [rings[si] advanceNaturalPtrSample:inNumberFrames];
+                continue;
+                
+            }
+
+            std::vector<float> scratchedBufLeft(inNumberFrames);
+            std::vector<float> scratchedBufRight(inNumberFrames);
+            {
+
+                float *pTempLeft = [rings[si] readPtrLeft];
+                float *pTempRight = [rings[si] readPtrRight];
+                for (int i = 0; i < inNumberFrames; i++){
+                    int x0 = ceil(i*_speedRate);
+                    int x1 = floor(i*_speedRate);
+                    float y0_l = pTempLeft[x0];
+                    float y0_r = pTempRight[x0];
+                    float y1_l = pTempLeft[x1];
+                    float y1_r = pTempRight[x1];
+                    scratchedBufLeft[i] = linearInterporation(x0, y0_l, x1, y1_l , i*_speedRate);
+                    scratchedBufRight[i] = linearInterporation(x0, y0_r, x1, y1_r , i*_speedRate);
+
+                    leftSrc[i]  += scratchedBufLeft[i];
+                    rightSrc[i] += scratchedBufRight[i];
+                }
+
+            }
+            [rings[si] advanceNaturalPtrSample:inNumberFrames];
+            [rings[si] advanceReadPtrSample:inNumberFrames*_speedRate];
+            continue;
+        }
+        if ([_ringVocals isShortage]){
+            [rings[si] advanceNaturalPtrSample:inNumberFrames];
+            continue;
+        }
         float *startLeft = [rings[si] readPtrLeft];
         float *startRight = [rings[si] readPtrRight];
         for(int i = 0 ; i < inNumberFrames; i++){
             
-            //pan gain control
+            //pan control
             float panVolLeft = 1.0;
             float panVolRight = 1.0;
             if (pans[si] >= 0){     //say 0.8
@@ -203,9 +272,12 @@
             }
             leftSrc[i] += *(startLeft + i) * volumes[si] * panVolLeft;
             rightSrc[i] += *(startRight + i) * volumes[si] * panVolRight;
+            
+ 
         }
         memcpy(ioData->mBuffers[0].mData, leftSrc.data(), inNumberFrames * sizeof(float));
         memcpy(ioData->mBuffers[1].mData, rightSrc.data(), inNumberFrames * sizeof(float));
+        [rings[si] advanceNaturalPtrSample:inNumberFrames];
         [rings[si] advanceReadPtrSample:inNumberFrames];
         
     }

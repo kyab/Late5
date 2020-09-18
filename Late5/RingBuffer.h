@@ -19,6 +19,7 @@
     
     UInt32 _recordFrame;
     UInt32 _playFrame;
+    UInt32 _naturalFrame;
     
     
     UInt32 _minOffsetFrame;
@@ -33,11 +34,13 @@
 -(float *)startPtrLeft;
 -(float *)startPtrRight;
 -(UInt32)advanceReadPtrSample:(SInt32)sample;
+-(UInt32)advanceNaturalPtrSample:(SInt32)sample;
 -(void)moveReadPtrToSample:(UInt32)sample;
 -(UInt32)readPtrDistanceFrom:(SInt32)sample;
 
 -(void)resetBuffer;
 -(void)follow;
+-(void)followToNatural;
 
 -(Boolean)isShortage;
 //-(void)dumpStatus;

@@ -11,6 +11,7 @@
 #import "AudioEngine.h"
 #import "RingBuffer.h"
 #import "CircularSlider.h"
+#import "TurnTableView.h"
 
 #include <dispatch/dispatch.h>
 
@@ -43,9 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
     float _panOther;
     
     
-    
     //GCD
     dispatch_queue_t _dq;
+    
+    __weak IBOutlet TurnTableView *_turnTable;
+    double _speedRate;
+    
+    
+    
 }
 
 
