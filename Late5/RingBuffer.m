@@ -241,8 +241,6 @@
 }
 
 
-
-
 -(float *)writePtrLeft{
     return &_leftBuf[_recordFrame];
 }
@@ -261,36 +259,43 @@
 }
 
 -(float *)readPtrLeft{
-    
-    UInt32 w = _recordFrame;
-    UInt32 r = _playFrame;
-    
-    if (w < r){
-        w += [self frames];
-    }
-    UInt32 off = w-r;
-
-    if (off >= _minOffsetFrame){
-        return &_leftBuf[_playFrame];
-    }else{
-        return NULL;
-    }
+    return &_leftBuf[_playFrame];
 }
 
 -(float *)readPtrRight{
-    UInt32 w = _recordFrame;
-    UInt32 r = _playFrame;
-    
-    if (w < r){
-        w += [self frames];
-    }
-    UInt32 off = w-r;
-    if (off >= _minOffsetFrame){
-        return &_rightBuf[_playFrame];
-    }else{
-        return NULL;
-    }
+    return &_rightBuf[_playFrame];
 }
+//-(float *)readPtrLeft{
+//
+//    UInt32 w = _recordFrame;
+//    UInt32 r = _playFrame;
+//
+//    if (w < r){
+//        w += [self frames];
+//    }
+//    UInt32 off = w-r;
+//
+//    if (off >= _minOffsetFrame){
+//        return &_leftBuf[_playFrame];
+//    }else{
+//        return NULL;
+//    }
+//}
+
+//-(float *)readPtrRight{
+//    UInt32 w = _recordFrame;
+//    UInt32 r = _playFrame;
+//
+//    if (w < r){
+//        w += [self frames];
+//    }
+//    UInt32 off = w-r;
+//    if (off >= _minOffsetFrame){
+//        return &_rightBuf[_playFrame];
+//    }else{
+//        return NULL;
+//    }
+//}
 
 -(float *)startPtrLeft{
     return _leftBuf;
@@ -313,6 +318,24 @@
         return YES;
     }
 }
+
+-(Boolean)isShortageNatural{
+    UInt32 n = _naturalFrame;
+    UInt32 r = _playFrame;
+    
+    if (n < r){
+        n += [self frames];
+    }
+    
+    UInt32 off = n-r;
+    if (off >= _minOffsetFrame){
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
+
 
 -(UInt32)advanceReadPtrSample:(SInt32)sample{
     SInt32 frames = [self frames];
@@ -393,6 +416,8 @@
 -(UInt32)playFrame{
     return _playFrame;
 }
-
+-(UInt32)naturalFrame{
+    return _naturalFrame;
+}
 
 @end

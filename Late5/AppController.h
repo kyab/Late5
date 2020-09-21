@@ -43,6 +43,12 @@ NS_ASSUME_NONNULL_BEGIN
     float _panPiano;
     float _panOther;
     
+    Boolean _scratchVocals;
+    Boolean _scratchDrums;
+    Boolean _scratchBass;
+    Boolean _scratchPiano;
+    Boolean _scratchOther;
+    
     
     //GCD
     dispatch_queue_t _dq;
@@ -50,6 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
     __weak IBOutlet TurnTableView *_turnTable;
     double _speedRate;
     
+    NSTimer *_tableStopTimer;
+    __weak IBOutlet NSButton *_btnTTStartStop;
     
     
 }

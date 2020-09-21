@@ -726,7 +726,7 @@
                         <rect key="frame" x="34" y="520" width="44" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Vocals" id="8dw-hu-bWr">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="label" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -735,7 +735,7 @@
                         <rect key="frame" x="98" y="520" width="44" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Drums" id="MaJ-Ho-VKc">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="label" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -744,7 +744,7 @@
                         <rect key="frame" x="163" y="520" width="33" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Bass" id="ckf-uO-NZL">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="label" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -753,7 +753,7 @@
                         <rect key="frame" x="219" y="520" width="38" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Piano" id="MmL-lw-wIo">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="label" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -762,7 +762,7 @@
                         <rect key="frame" x="282" y="520" width="39" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Other" id="nan-Dm-kem">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="label" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -779,7 +779,7 @@
                         <rect key="frame" x="6" y="273" width="27" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Pan" id="hw3-MY-6He">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="label" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -823,12 +823,88 @@
                         <rect key="frame" x="82" y="20" width="210" height="210"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qye-6t-Bcl">
+                        <rect key="frame" x="56" y="232" width="22" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Qkj-NS-nre">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="label" size="13"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="scratchVocalsChanged:" target="fbB-Wp-yOY" id="DKj-qy-QmI"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ub-mxf">
+                        <rect key="frame" x="113" y="232" width="22" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Sdx-Tn-Uw7">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="label" size="13"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="scratchDrumsChanged:" target="fbB-Wp-yOY" id="zay-r4-opE"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fa6-GU-IDQ">
+                        <rect key="frame" x="170" y="232" width="22" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eFh-Cn-wMA">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="label" size="13"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="scratchBassChanged:" target="fbB-Wp-yOY" id="I2M-zk-YVm"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mnh-Pc-HZX">
+                        <rect key="frame" x="229" y="232" width="22" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0Mb-Ky-NTC">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="label" size="13"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="scratchPianoChanged:" target="fbB-Wp-yOY" id="Mg0-9z-pOz"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rcG-wG-AfD">
+                        <rect key="frame" x="293" y="232" width="22" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dC4-Ce-TUI">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="label" size="13"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="scratchOtherChanged:" target="fbB-Wp-yOY" id="LeO-tg-TBH"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Doh-1U-pC6">
+                        <rect key="frame" x="1" y="232" width="51" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Scratch" id="2pw-sZ-9Vm">
+                            <font key="font" metaFont="label" size="13"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2d-d8-kUA">
+                        <rect key="frame" x="268" y="11" width="73" height="73"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" title="Start/Stop" bezelStyle="shadowlessSquare" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CTu-y7-dMY">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <font key="font" metaFont="label" size="13"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="ttStartStopClicked:" target="fbB-Wp-yOY" id="BUo-bp-c0x"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="98" y="530"/>
         </window>
         <customObject id="fbB-Wp-yOY" customClass="AppController">
             <connections>
+                <outlet property="_btnTTStartStop" destination="s2d-d8-kUA" id="J30-4D-3NL"/>
                 <outlet property="_turnTable" destination="Pax-BR-IdI" id="Vx0-fe-XJN"/>
             </connections>
         </customObject>

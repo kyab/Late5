@@ -12,7 +12,7 @@
 #include <vector>
 
 //#define SPLEETER_MODELS "/Users/koji/work/PartScratch/spleeterpp/build/models/offline"
-#define LATE_SEC 3
+#define LATE_SAMPLE 132288  // ~= 44100*3, can be devide by 32.
 
 /////////////////////////////////////////////
 static double linearInterporation(int x0, double y0, int x1, double y1, double x){
@@ -36,10 +36,11 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
     
     [self initSpleeter];
     
-    //    https://stackoverflow.com/questions/17690740/create-a-high-priority-serial-dispatch-queue-with-gcd/17690878
     _dq = dispatch_queue_create("spleeter", DISPATCH_QUEUE_SERIAL);
+    //    https://stackoverflow.com/questions/17690740/create-a-high-priority-serial-dispatch-queue-with-gcd/17690878
+    dispatch_set_target_queue(_dq, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0));
     
-    _ring = [[RingBuffer alloc] init];
+    _ring = [[RingBuffer alloc] init];      //the ring for the view
     _ring5a = [[RingBuffer alloc] init];
     _ring5b = [[RingBuffer alloc] init];
     
@@ -61,6 +62,12 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
     _panPiano = 0.0;
     _panOther = 0.0;
     
+    _scratchVocals = YES;
+    _scratchDrums = YES;
+    _scratchBass = YES;
+    _scratchPiano = YES;
+    _scratchOther = YES;
+    
     _tempRing = _ring5a;
     
     _ae = [[AudioEngine alloc] init];
@@ -77,7 +84,7 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
     
     _speedRate = 1.0;
     [_turnTable setDelegate:(id<TurnTableDelegate>)self];
-    [_turnTable setRingBuffer:_ringDrums];
+    [_turnTable setRingBuffer:_ring];
     [_turnTable start];
     
 }
@@ -108,9 +115,11 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
 -(void)turnTableSpeedRateChanged{
     _speedRate = [_turnTable speedRate];
     if(_speedRate == 1.0){
+        [_ringVocals followToNatural];
         [_ringDrums followToNatural];
         [_ringBass followToNatural];
-//        [_ringOther followToNatural];
+        [_ringPiano followToNatural];
+        [_ringOther followToNatural];
     }
 }
 
@@ -121,53 +130,98 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
     NSSlider *slider = (NSSlider *)sender;
     _volVocals = [slider doubleValue];
 }
-
 - (IBAction)volDrumsChanged:(id)sender {
     NSSlider *slider = (NSSlider *)sender;
     _volDrums = [slider doubleValue];
 }
-
 - (IBAction)volBassChanged:(id)sender {
     NSSlider *slider = (NSSlider *)sender;
     _volBass = [slider doubleValue];
 }
-
 - (IBAction)volPianoChanged:(id)sender {
     NSSlider *slider = (NSSlider *)sender;
     _volPiano = [slider doubleValue];
 }
-
 - (IBAction)volOtherChanged:(id)sender {
     NSSlider *slider = (NSSlider *)sender;
     _volOther = [slider doubleValue];
 }
 
+
 - (IBAction)panVocalsChanged:(id)sender {
     CircularSlider *slider = (CircularSlider *)sender;
     _panVocals = [slider floatValue];
 }
-
 - (IBAction)panDrumsChanged:(id)sender {
     CircularSlider *slider = (CircularSlider *)sender;
     _panDrums = [slider floatValue];
 }
-
 - (IBAction)panBassChanged:(id)sender {
     CircularSlider *slider = (CircularSlider *)sender;
     _panBass = [slider floatValue];
 }
-
 - (IBAction)panPianoChanged:(id)sender {
     CircularSlider *slider = (CircularSlider *)sender;
     _panPiano = [slider floatValue];
 }
-
 - (IBAction)panOtherChanged:(id)sender {
     CircularSlider *slider = (CircularSlider *)sender;
     _panOther = [slider floatValue];
 }
 
 
+- (IBAction)scratchVocalsChanged:(id)sender {
+    NSButton *chk = (NSButton *)sender;
+    _scratchVocals = ([chk state] == NSOnState);
+}
+- (IBAction)scratchDrumsChanged:(id)sender {
+    NSButton *chk = (NSButton *)sender;
+    _scratchDrums = ([chk state] == NSOnState);
+}
+- (IBAction)scratchBassChanged:(id)sender {
+    NSButton *chk = (NSButton *)sender;
+    _scratchBass = ([chk state] == NSOnState);
+}
+- (IBAction)scratchPianoChanged:(id)sender {
+    NSButton *chk = (NSButton *)sender;
+    _scratchPiano = ([chk state] == NSOnState);
+}
+- (IBAction)scratchOtherChanged:(id)sender {
+    NSButton *chk = (NSButton *)sender;
+    _scratchOther = ([chk state] == NSOnState);
+}
+
+
+- (IBAction)ttStartStopClicked:(id)sender {
+    if (_btnTTStartStop.state == NSOnState){
+        if (_tableStopTimer){
+            [_tableStopTimer invalidate];
+        }
+        
+        _speedRate = 1.0;
+        [_ringVocals followToNatural];
+        [_ringDrums followToNatural];
+        [_ringBass followToNatural];
+        [_ringPiano followToNatural];
+        [_ringOther followToNatural];
+    
+    }else{
+        _tableStopTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
+                           target:self
+                           selector:@selector(tableStopTimer:)
+                           userInfo:nil
+                                                          repeats:YES];
+    }
+}
+
+-(void)tableStopTimer:(NSTimer *)t{
+    if (_speedRate < 0.01f){
+        _speedRate = 0.0f;
+        [_tableStopTimer invalidate];
+    }else{
+        _speedRate -= 0.02;
+    }
+}
 
 
 
@@ -184,7 +238,6 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
     } 
     
     if([_ringOther isShortage]){
-//        NSLog(@"shortage");
         UInt32 sampleNum = inNumberFrames;
         float *pLeft = (float *)ioData->mBuffers[0].mData;
         float *pRight = (float *)ioData->mBuffers[1].mData;
@@ -214,47 +267,65 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
     pans[3] = _panPiano;
     pans[4] = _panOther;
     
+    Boolean scratch[5];
+    scratch[0] = _scratchVocals;
+    scratch[1] = _scratchDrums;
+    scratch[2] = _scratchBass;
+    scratch[3] = _scratchPiano;
+    scratch[4] = _scratchOther;
+    std::vector<UInt32> scratches;
+    std::vector<UInt32> noScratches;
+    for(int i = 0; i < 5; i++){
+        if (scratch[i]){
+            scratches.push_back(i);
+        }else{
+            noScratches.push_back(i);
+        }
+    }
+    
+    [_ring advanceReadPtrSample:inNumberFrames*_speedRate];
+    
     std::vector<float> leftSrc(inNumberFrames);
     std::vector<float> rightSrc(inNumberFrames);
     
-    for(int si = 0; si < 5; si++){
-        
-        if (si == 1 || si == 2){
-            if([rings[si] isShortage]) {
-                [rings[si] advanceNaturalPtrSample:inNumberFrames];
-                continue;
-                
-            }
+    for(UInt32 si : scratches){
+        std::vector<float> scratchedBufLeft(inNumberFrames);
+        std::vector<float> scratchedBufRight(inNumberFrames);
+        {
 
-            std::vector<float> scratchedBufLeft(inNumberFrames);
-            std::vector<float> scratchedBufRight(inNumberFrames);
-            {
+            float *pTempLeft = [rings[si] readPtrLeft];
+            float *pTempRight = [rings[si] readPtrRight];
+            for (int i = 0; i < inNumberFrames; i++){
+                int x0 = floor(i*_speedRate);
+                int x1 = ceil(i*_speedRate);
+                float y0_l = pTempLeft[x0];
+                float y0_r = pTempRight[x0];
+                float y1_l = pTempLeft[x1];
+                float y1_r = pTempRight[x1];
+                scratchedBufLeft[i] = linearInterporation(x0, y0_l, x1, y1_l , i*_speedRate);
+                scratchedBufRight[i] = linearInterporation(x0, y0_r, x1, y1_r , i*_speedRate);
 
-                float *pTempLeft = [rings[si] readPtrLeft];
-                float *pTempRight = [rings[si] readPtrRight];
-                for (int i = 0; i < inNumberFrames; i++){
-                    int x0 = ceil(i*_speedRate);
-                    int x1 = floor(i*_speedRate);
-                    float y0_l = pTempLeft[x0];
-                    float y0_r = pTempRight[x0];
-                    float y1_l = pTempLeft[x1];
-                    float y1_r = pTempRight[x1];
-                    scratchedBufLeft[i] = linearInterporation(x0, y0_l, x1, y1_l , i*_speedRate);
-                    scratchedBufRight[i] = linearInterporation(x0, y0_r, x1, y1_r , i*_speedRate);
-
-                    leftSrc[i]  += scratchedBufLeft[i];
-                    rightSrc[i] += scratchedBufRight[i];
+                //pan control
+                float panVolLeft = 1.0;
+                float panVolRight = 1.0;
+                if (pans[si] >= 0){     //say 0.8
+                    panVolRight = 1.0;
+                    panVolLeft = 1.0 - pans[si];
+                }else{
+                    panVolLeft = 1.0;
+                    panVolRight = 1.0 + pans[si];
                 }
-
+                
+                leftSrc[i]  += scratchedBufLeft[i]*volumes[si] * panVolLeft;
+                rightSrc[i] += scratchedBufRight[i]*volumes[si] * panVolRight;
             }
-            [rings[si] advanceNaturalPtrSample:inNumberFrames];
-            [rings[si] advanceReadPtrSample:inNumberFrames*_speedRate];
-            continue;
+
         }
-        if ([_ringVocals isShortage]){
-            [rings[si] advanceNaturalPtrSample:inNumberFrames];
-            continue;
-        }
+        [rings[si] advanceReadPtrSample:round(inNumberFrames*_speedRate)];
+        [rings[si] advanceNaturalPtrSample:inNumberFrames];
+    }
+    
+    for(UInt32 si : noScratches){
         float *startLeft = [rings[si] readPtrLeft];
         float *startRight = [rings[si] readPtrRight];
         for(int i = 0 ; i < inNumberFrames; i++){
@@ -268,19 +339,18 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
             }else{
                 panVolLeft = 1.0;
                 panVolRight = 1.0 + pans[si];
-
             }
             leftSrc[i] += *(startLeft + i) * volumes[si] * panVolLeft;
             rightSrc[i] += *(startRight + i) * volumes[si] * panVolRight;
             
- 
         }
-        memcpy(ioData->mBuffers[0].mData, leftSrc.data(), inNumberFrames * sizeof(float));
-        memcpy(ioData->mBuffers[1].mData, rightSrc.data(), inNumberFrames * sizeof(float));
-        [rings[si] advanceNaturalPtrSample:inNumberFrames];
         [rings[si] advanceReadPtrSample:inNumberFrames];
-        
+        [rings[si] advanceNaturalPtrSample:inNumberFrames];
+
     }
+
+    memcpy(ioData->mBuffers[0].mData, leftSrc.data(), inNumberFrames * sizeof(float));
+    memcpy(ioData->mBuffers[1].mData, rightSrc.data(), inNumberFrames * sizeof(float));
     
     
     return noErr;
@@ -315,13 +385,15 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
     }
     
     free(bufferList);
+    
     [_tempRing advanceWritePtrSample:inNumberFrames];
+    [_ring advanceWritePtrSample:inNumberFrames];
 
     if ([_ae isRecording]){
         
         float *startPtrLeft = [_tempRing startPtrLeft];
         float *currentPtrLeft = [_tempRing writePtrLeft];
-        if (currentPtrLeft - startPtrLeft >= 44100*LATE_SEC){
+        if (currentPtrLeft - startPtrLeft >= LATE_SAMPLE){
             
             RingBuffer *bgRing = self->_tempRing;
             
@@ -333,14 +405,15 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
             }
             
             dispatch_async(_dq, ^{
-                NSLog(@"block start");
+
                 //ready interleaved samples for spleeter
-                std::vector<float> fragment(44100*2/*head*/ + 44100*2*LATE_SEC);
-                for(int i = 0; i < 44100*LATE_SEC; i++){
+                std::vector<float> fragment(44100*2/*head*/ + LATE_SAMPLE*2);
+                for(int i = 0; i < LATE_SAMPLE; i++){
                     fragment[44100*2 + i*2] = *([bgRing startPtrLeft]+i);
                     fragment[44100*2 +i*2+1] = *([bgRing startPtrRight]+i);
                 }
 
+                //spleet it!
                 spleeter::Waveform vocals, drums, bass, piano, other;
                 auto source = Eigen::Map<spleeter::Waveform>(fragment.data(),
                                                             2, fragment.size()/2);
@@ -348,8 +421,8 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
                 spleeter::Split(source, &vocals, &drums, &bass, &piano, &other,err);
                 NSLog(@"Split error = %d", err.value());
                 
-                std::vector<float> left(44100*LATE_SEC);
-                std::vector<float> right(44100*LATE_SEC);
+                std::vector<float> left(LATE_SAMPLE);
+                std::vector<float> right(LATE_SAMPLE);
                 spleeter::Waveform *waveForms[5];
                 waveForms[0] = &vocals;
                 waveForms[1] = &drums;
@@ -366,20 +439,19 @@ static double linearInterporation(int x0, double y0, int x1, double y1, double x
                 
                 for (int si = 0; si < 5 ; si++){
                     //back to non-interleaved,
-                    for (int i = 0; i < 44100*LATE_SEC; i++){
+                    for (int i = 0; i < LATE_SAMPLE; i++){
                         left[i] = *(waveForms[si]->data() + 44100*2 + i*2);
                         right[i] = *(waveForms[si]->data() + 44100*2 + i*2+1);
                     }
                     
                     //then write to rings
-                    memcpy([rings[si] writePtrLeft], left.data(), 44100*LATE_SEC*sizeof(float));
-                    memcpy([rings[si] writePtrRight], right.data(), 44100*LATE_SEC*sizeof(float));
-                    [rings[si] advanceWritePtrSample:44100*LATE_SEC];
+                    memcpy([rings[si] writePtrLeft], left.data(), LATE_SAMPLE*sizeof(float));
+                    memcpy([rings[si] writePtrRight], right.data(), LATE_SAMPLE*sizeof(float));
+                    [rings[si] advanceWritePtrSample:LATE_SAMPLE];
                     
                 }
                 
                 [bgRing resetBuffer];
-                NSLog(@"block done");
             });
         }
     }

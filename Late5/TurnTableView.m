@@ -137,7 +137,7 @@ double rad2deg(double rad){
     
     
     CGFloat dist = sqrt(x*x + y*y);
-    CGFloat r = self.bounds.size.height/2 - 10;
+    CGFloat r = self.bounds.size.height/2/* - 10*/;
     
     if (dist <= r){
         _pressing = YES;

@@ -43,6 +43,7 @@
 -(void)followToNatural;
 
 -(Boolean)isShortage;
+-(Boolean)isShortageNatural;
 //-(void)dumpStatus;
 
 
@@ -52,6 +53,7 @@
 
 -(UInt32)recordFrame;
 -(UInt32)playFrame;
+-(UInt32)naturalFrame;
 
 
 @end
