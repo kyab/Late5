@@ -40,6 +40,108 @@
 			<key>uniqueIdentifier</key>
 			<string>0798F6EC-F110-41FE-9CE9-13EF173B36DD</string>
 		</dict>
+		<key>0FC03EA0-21B2-4634-8645-6BF364B38F6E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>0FC03EA0-21B2-4634-8645-6BF364B38F6E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Late5 project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Late5</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Late5</string>
+			<key>timeStartedRecording</key>
+			<real>622635183.822528</real>
+			<key>timeStoppedRecording</key>
+			<real>622635186.71989095</real>
+			<key>title</key>
+			<string>Build Late5</string>
+			<key>uniqueIdentifier</key>
+			<string>0FC03EA0-21B2-4634-8645-6BF364B38F6E</string>
+		</dict>
+		<key>2994E8BF-C903-47EC-B1C2-F7A4F6017868</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2994E8BF-C903-47EC-B1C2-F7A4F6017868.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Late5 project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Late5</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Late5</string>
+			<key>timeStartedRecording</key>
+			<real>622636028.46072495</real>
+			<key>timeStoppedRecording</key>
+			<real>622636037.19353604</real>
+			<key>title</key>
+			<string>Build Late5</string>
+			<key>uniqueIdentifier</key>
+			<string>2994E8BF-C903-47EC-B1C2-F7A4F6017868</string>
+		</dict>
+		<key>2F81A9B0-FC4D-4D6A-9089-5C1443FDA25B</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2F81A9B0-FC4D-4D6A-9089-5C1443FDA25B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Late5 project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Late5</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Late5</string>
+			<key>timeStartedRecording</key>
+			<real>622636049.19900095</real>
+			<key>timeStoppedRecording</key>
+			<real>622636049.41431201</real>
+			<key>title</key>
+			<string>Build Late5</string>
+			<key>uniqueIdentifier</key>
+			<string>2F81A9B0-FC4D-4D6A-9089-5C1443FDA25B</string>
+		</dict>
 		<key>3905F512-E01D-4A68-A071-AB9B1F0D5954</key>
 		<dict>
 			<key>className</key>
@@ -175,6 +277,74 @@
 			<string>Build Late5</string>
 			<key>uniqueIdentifier</key>
 			<string>667A7F98-824D-46AE-815B-D39419748118</string>
+		</dict>
+		<key>940B18F4-F146-4E91-AE46-E86F2B3FCFEA</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>940B18F4-F146-4E91-AE46-E86F2B3FCFEA.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Late5 project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Late5</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Late5</string>
+			<key>timeStartedRecording</key>
+			<real>622730545.47771299</real>
+			<key>timeStoppedRecording</key>
+			<real>622730545.56995904</real>
+			<key>title</key>
+			<string>Build Late5</string>
+			<key>uniqueIdentifier</key>
+			<string>940B18F4-F146-4E91-AE46-E86F2B3FCFEA</string>
+		</dict>
+		<key>C047A88B-9757-4FB7-9CAF-E0E44A6ACFBD</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C047A88B-9757-4FB7-9CAF-E0E44A6ACFBD.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Late5 project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Late5</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Late5</string>
+			<key>timeStartedRecording</key>
+			<real>622730537.60669696</real>
+			<key>timeStoppedRecording</key>
+			<real>622730542.60802996</real>
+			<key>title</key>
+			<string>Build Late5</string>
+			<key>uniqueIdentifier</key>
+			<string>C047A88B-9757-4FB7-9CAF-E0E44A6ACFBD</string>
 		</dict>
 		<key>C777C4F6-DB99-42F3-907B-D8C5BB3A6BFA</key>
 		<dict>

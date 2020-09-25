@@ -380,7 +380,7 @@
 					/Users/koji/work/PartScratch/spleeterpp/build/tensorflow/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyab.Late5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -412,7 +412,7 @@
 					/Users/koji/work/PartScratch/spleeterpp/build/tensorflow/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyab.Late5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

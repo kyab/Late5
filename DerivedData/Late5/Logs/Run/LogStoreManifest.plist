@@ -6,6 +6,40 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
+		<key>3122C42F-E201-483A-A2BB-CEF62286F642</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>3122C42F-E201-483A-A2BB-CEF62286F642.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Late5 project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Late5</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Late5</string>
+			<key>timeStartedRecording</key>
+			<real>622730545.57423496</real>
+			<key>timeStoppedRecording</key>
+			<real>622730613.95960605</real>
+			<key>title</key>
+			<string>Run Late5</string>
+			<key>uniqueIdentifier</key>
+			<string>3122C42F-E201-483A-A2BB-CEF62286F642</string>
+		</dict>
 		<key>3890DB4E-720A-48ED-8494-4482A3156C2E</key>
 		<dict>
 			<key>className</key>
@@ -107,6 +141,40 @@
 			<string>Run Late5</string>
 			<key>uniqueIdentifier</key>
 			<string>472A6ECA-3E82-49CA-B7DB-2DFD2439F0B5</string>
+		</dict>
+		<key>8D415EAC-9936-4E10-87A6-9EDA6587B111</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>8D415EAC-9936-4E10-87A6-9EDA6587B111.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Late5 project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Late5</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Late5</string>
+			<key>timeStartedRecording</key>
+			<real>622636049.43416095</real>
+			<key>timeStoppedRecording</key>
+			<real>622636120.66326499</real>
+			<key>title</key>
+			<string>Run Late5</string>
+			<key>uniqueIdentifier</key>
+			<string>8D415EAC-9936-4E10-87A6-9EDA6587B111</string>
 		</dict>
 		<key>9F3F309C-70BA-453B-BA60-F4B3FFB15556</key>
 		<dict>
